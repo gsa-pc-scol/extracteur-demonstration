@@ -1,0 +1,35 @@
+---
+version: '2'
+services:
+  postgres:
+    image: postgres:11.5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: extract
+      POSTGRES_USER: pcscol
+      POSTGRES_PASSWORD: pcscol
+    volumes:
+      - ./.postgres:/var/lib/postgresql/data
+    networks:
+      dev:
+        aliases:
+          - postgres
+  pgadmin:
+    image: dpage/pgadmin4:4.11
+    ports:
+      - "8089:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pcscol@pcscol.fr
+      PGADMIN_DEFAULT_PASSWORD: pcscol
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+      - ./.pgadmin4:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      dev:
+        aliases:
+          - pgadmin
+networks:
+  dev:
