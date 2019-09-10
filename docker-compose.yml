@@ -1,35 +1,15 @@
----
-version: '2'
+# Fichier de configuration du docker compose pour prendre en compte le script d'initialisation au lancement du docker compose.
+# Dans le repertoire courant, créer un dossier init.sql qui contiendra le script "init.sql" qui initilialisera la base afin
+# afin de permettre à l'extracteur d'y recopier les données.
+version: "3"
 services:
   postgres:
-    image: postgres:11.5
+    image: postgres:latest
     ports:
-      - "5432:5432"
+    - 5432:5432
     environment:
-      POSTGRES_DB: extract
-      POSTGRES_USER: pcscol
-      POSTGRES_PASSWORD: pcscol
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ref
     volumes:
-      - ./.postgres:/var/lib/postgresql/data
-    networks:
-      dev:
-        aliases:
-          - postgres
-  pgadmin:
-    image: dpage/pgadmin4:4.11
-    ports:
-      - "8089:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pcscol@pcscol.fr
-      PGADMIN_DEFAULT_PASSWORD: pcscol
-    volumes:
-      - ./servers.json:/pgadmin4/servers.json
-      - ./.pgadmin4:/var/lib/pgadmin
-    depends_on:
-      - postgres
-    networks:
-      dev:
-        aliases:
-          - pgadmin
-networks:
-  dev:
+      - ./init.sql:/docker-entrypoint-initdb.d
