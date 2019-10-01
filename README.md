@@ -15,6 +15,7 @@ Démonstrateur d'un extracteur de données Pégase
 LANCER L'EXTRACTION
 
 Via la ligne de commande
+
 Pour lancer l'extraction de données en la ligne de commande, il faut récupérer l'archive à l'endroit suivant : "??????"
 Une fois l'archive téléchargée et décompréssée, vous devez configurer le job par rapport à votre environnement.
 
@@ -31,6 +32,7 @@ Lancez le script correspondant à votre environnement :
 
 
 Via l'interface Talend
+
 Installation de Talend ?
 procédure pour accéder à gitlab ou github ?
 
