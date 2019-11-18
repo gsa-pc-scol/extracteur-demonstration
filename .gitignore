@@ -7,9 +7,6 @@
 # BlueJ files
 *.ctxt
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
 *.jar
 *.war
@@ -25,3 +22,26 @@ hs_err_pid*
 .idea/
 .pgadmin4/
 .postgres/
+
+# Eclipse project files #
+*.index
+*.screenshot
+.classpath
+.project
+.JETEmitters
+.metadata
+.settings
+target/
+bin/
+businessProcess/
+businessProcessSVG/
+code/
+components/
+context/
+documentations/
+images/
+metadata/
+migration.log
+poms/
+sqlPatterns/
+temp/
